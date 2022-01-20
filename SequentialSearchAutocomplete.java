@@ -9,10 +9,12 @@ import java.util.List;
  *
  * @see Autocomplete
  */
-public class SequentialSearchAutocomplete implements Autocomplete {
+
+    public class SequentialSearchAutocomplete implements Autocomplete {
     /**
      * {@link List} of added autocompletion terms.
      */
+
     private final List<CharSequence> terms;
 
     /**
@@ -20,6 +22,7 @@ public class SequentialSearchAutocomplete implements Autocomplete {
      */
     public SequentialSearchAutocomplete() {
         this.terms = new ArrayList<>();
+        this.terms.add("dog");
     }
 
     @Override
@@ -30,7 +33,12 @@ public class SequentialSearchAutocomplete implements Autocomplete {
 
     @Override
     public List<CharSequence> allMatches(CharSequence prefix) {
-        // TODO: Replace with your code
+        List<CharSequence> matches = new ArrayList<>();
+        for (int i = 0; i < terms.size(); i++) {
+            if (prefix.isPrefixOf(prefix, terms.get(i))) {
+                matches.add(terms.get(i));
+            }
+        }
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }
